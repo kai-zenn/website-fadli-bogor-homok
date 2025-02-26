@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menjaga Persatuan dan Kesatuan Bangsa</title>
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #34495e;
+      --accent-color: #3498db;
+      --light-color: #ecf0f1;
+      --text-color: #2c3e50;
+      --border-color: #bdc3c7;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    html, body {
+      height: 100%;
+      width: 100%;
+      overflow-x: hidden;
+      background-color: var(--light-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+    
+    .page-wrapper {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      width: 100%;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 100%;
+      padding: 0;
+      margin: 0 auto;
+    }
+    
+    header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 15px 0;
+      border-bottom: 5px solid var(--accent-color);
+      width: 100%;
+    }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 0 50px;
+    }
+    
+    .student-info {
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+    
+    .assignment-badge {
+      background-color: white;
+      color: var(--primary-color);
+      border-radius: 20px;
+      padding: 10px 25px;
+      font-weight: bold;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+    
+    .class-info {
+      font-size: 1.1rem;
+      text-align: right;
+      font-weight: bold;
+    }
+    
+    .main-title {
+      text-align: center;
+      margin: 30px auto;
+      color: var(--primary-color);
+      border-bottom: 2px solid var(--border-color);
+      border-top: 2px solid var(--border-color);
+      padding: 20px 0;
+      width: 100%;
+      max-width: 100%;
+      font-size: 2rem;
+    }
+    
+    .content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin: 0 auto 40px;
+      width: 100%;
+      max-width: 100%;
+      padding: 0 50px;
+    }
+    
+    @media (max-width: 768px) {
+      .content {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .text-content p {
+      margin-bottom: 20px;
+      text-align: justify;
+      font-size: 1.5rem;
+    }
+    
+    /* Modified image container for text wrapping */
+    .image-container {
+      margin: 10px 0;
+      float: left;
+      margin-right: 20px;
+      margin-bottom: 10px;
+    }
+    
+    /* Right-aligned image for variation */
+    .image-container.right {
+      float: right;
+      margin-left: 20px;
+      margin-right: 0;
+    }
+    
+    .image-container img {
+      width:460px;
+      border-radius: 8px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      height: 420px;
+      object-fit: cover;
+    }
+    
+    /* Add clearfix to prevent layout issues with floating elements */
+    .text-content::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    
+    .highlight {
+      color: var(--accent-color);
+      font-weight: bold;
+    }
+    
+    .solution-section {
+      background-color: white;
+      border-left: 5px solid var(--accent-color);
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      clear: both; 
+    }
+    
+    .solution-section h3 {
+      color: var(--primary-color);
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+    }
+    
+    footer {
+      background-color: var(--primary-color);
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      width: 100%;
+      margin-top: auto;
+      font-size: 1rem;
+    }
+    
+    .tab-container {
+      width: 100%;
+      max-width: 100%;
+      margin: 40px auto;
+      padding: 0 50px;
+      clear: both; /* Clear any floats before tabs */
+    }
+    
+    .tabs {
+      display: flex;
+      border-bottom: 2px solid var(--border-color);
+    }
+    
+    .tab {
+      padding: 12px 25px;
+      background-color: var(--light-color);
+      cursor: pointer;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      margin-right: 5px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    
+    .tab:hover {
+      background-color: #d5dbdb;
+    }
+    
+    .tab.active {
+      background-color: var(--accent-color);
+      color: white;
+    }
+    
+    .tab-content {
+      display: none;
+      padding: 30px;
+      background-color: white;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      min-height: 300px;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    .tab-content h3 {
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      font-size: 1.4rem;
+    }
+    
+    .tab-content p, .tab-content li {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+    
+    .tab-content ul, .tab-content ol {
+      margin-left: 25px;
+      margin-bottom: 20px;
+    }
+    
+    .section-2 {
+      margin: 0 auto 40px;
+      width: 100%;
+      max-width: 100%;
+      padding: 0 50px;
+    }
+    
+    .conclusion {
+      color: var(--accent-color);
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <header>
+      <div class="header-content">
+        <div class="student-info">MUHAMMAD FADLI GAZZAN</div>
+        <div class="assignment-badge">TUGAS PPKN</div>
+        <div class="class-info">XII MIPA 1</div>
+      </div>
+    </header>
+    
+    <h1 class="main-title">MENJAGA PERSATUAN DAN KESATUAN BANGSA DARI ANCAMAN RADIKALISME DAN TAWURAN</h1>
+    
+    <div class="content">
+      <div class="text-content">
+        <p>Persatuan dan kesatuan bangsa Indonesia adalah hal yang sangat penting untuk menjaga stabilitas negara. Namun, saat ini persatuan tersebut sering terganggu oleh berbagai ancaman, seperti <span class="highlight">radikalisme, terorisme, dan tawuran</span>. Tindakan-tindakan tersebut dapat menyebabkan perpecahan di masyarakat dan bahkan mengancam keamanan negara.</p>
+        
+        <div class="image-container">
+          <img src="radikal.jpg" alt="Ilustrasi dampak radikalisme">
+        </div>
+        
+        <p><span class="highlight">Radikalisme dan terorisme</span> muncul karena berbagai faktor, seperti ketidakpuasan terhadap pemerintah, pengaruh ideologi ekstrim, dan kurangnya pemahaman terhadap nilai-nilai kebangsaan. Kelompok-kelompok radikal sering menggunakan kekerasan untuk mencapai tujuan mereka, yang pada akhirnya merugikan banyak pihak, terutama masyarakat sipil.</p>
+      </div>
+      
+      <div class="text-content">
+        <div class="image-container right">
+          <img src="suzuran vs housen.jpg" alt="Ilustrasi tawuran pelajar">
+        </div>
+        
+        <p>Selain radikalisme dan terorisme, <span class="highlight">tawuran juga menjadi masalah serius di Indonesia</span>. Tawuran pelajar antar kelompok sering terjadi akibat hal-hal sepele, seperti persaingan antarsekolah atau percekcokan perseorangan. Tawuran ini tidak hanya merugikan individu yang terlibat, tetapi juga mengganggu ketertiban umum dan merusak fasilitas umum.</p>
+        
+        <div class="solution-section">
+          <h3>Upaya Penanganan</h3>
+          <p>Untuk mengatasi masalah ini, pemerintah telah melakukan berbagai upaya, seperti memperkuat pendidikan karakter di sekolah. <span class="highlight">Pendidikan Pancasila dan Kewarganegaraan (PPKN)</span> menjadi salah satu mata pelajaran yang berperan penting dalam menanamkan nilai-nilai persatuan, toleransi, dan cinta tanah air. Dengan pemahaman yang baik tentang Pancasila, diharapkan generasi muda dapat menjauhi paham radikal dan tindakan kekerasan.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="content section-2">
+      <div class="text-content">
+        <p>Selain itu, aparat keamanan juga terus melakukan <span class="highlight">pengawasan</span> terhadap kelompok-kelompok yang diduga terlibat dalam aktivitas radikalisme dan terorisme. Pemerintah bekerja sama dengan berbagai pihak untuk mencegah penyebaran ideologi ekstrem, baik melalui dunia maya maupun pertemuan-pertemuan tertutup. Masyarakat juga diminta untuk melaporkan aktivitas mencurigakan yang berpotensi mengancam keamanan negara.</p>
+        
+        <p>Dalam menangani tawuran, sekolah dan orang tua memiliki peran penting dalam membentuk karakter siswa. Sekolah perlu menanamkan kegiatan positif, seperti ekstrakurikuler dan pelatihan kepemimpinan, agar siswa memiliki wadah untuk menyalurkan energi mereka secara produktif. Orang tua juga harus selalu dekat dengan anak-anak mereka agar tidak terjerumus dalam pergaulan yang salah.</p>
+        
+        <div class="image-container">
+          <img src="gelut.jpg" alt="Ilustrasi tawuran">
+        </div>
+      </div>
+      
+      <div class="text-content">
+        <p>Selain itu, program deradikalisasi juga perlu terus dilakukan untuk membantu mereka pelaku radikalisme kembali ke masyarakat. Pemerintah telah menyelaikan program rehabilitasi bagi individu yang terlibat dalam radikal agar mereka dapat memiliki kehidupan yang lebih baik dan tidak kembali ke jalan kekerasan.</p>
+        
+        <p>Masyarakat juga harus ikut berperan dalam menjaga persatuan dan kesatuan bangsa. Dengan saling menghormati perbedaan, menjauhi sikap intoleransi, dan memperkuat nilai kebersatuan, kita dapat mencegah perpecahan yang diakibatkan oleh radikalisme dan tawuran.</p>
+        
+        <p class="conclusion">Kesimpulannya, menjaga persatuan bangsa adalah tanggung jawab bersama. Pemerintah, sekolah, keluarga, dan masyarakat harus bekerja sama untuk mencegah radikalisme, terorisme, dan tawuran. Dengan kesadaran dan tindakan nyata dari semua pihak, Indonesia dapat tetap menjadi negara yang damai dan bersatu.</p>
+      </div>
+    </div>
+    
+    <div class="tab-container">
+      <div class="tabs">
+        <div class="tab active" onclick="openTab(event, 'tab1')">Radikalisme</div>
+        <div class="tab" onclick="openTab(event, 'tab2')">Tawuran</div>
+        <div class="tab" onclick="openTab(event, 'tab3')">Solusi</div>
+      </div>
+      
+      <div id="tab1" class="tab-content active">
+        <h3>Faktor Penyebab Radikalisme</h3>
+        <ul>
+          <li>Ketidakpuasan terhadap kebijakan pemerintah</li>
+          <li>Kurangnya pemahaman agama yang komprehensif</li>
+          <li>Pengaruh media sosial dan informasi yang menyesatkan</li>
+          <li>Kondisi ekonomi yang tidak merata</li>
+          <li>Kurangnya pendidikan tentang nilai-nilai kebangsaan</li>
+        </ul>
+        <p>Radikalisme dapat berujung pada aksi terorisme yang mengancam keamanan dan keutuhan bangsa. Penyebaran paham radikal kini semakin mudah dengan adanya internet dan media sosial, sehingga diperlukan literasi digital yang kuat untuk mencegah penyebarannya.</p>
+      </div>
+      
+      <div id="tab2" class="tab-content">
+        <h3>Fenomena Tawuran</h3>
+        <p>Tawuran antar pelajar sering terjadi di kota-kota besar di Indonesia. Beberapa faktor penyebabnya antara lain:</p>
+        <ul>
+          <li>Persaingan antar sekolah</li>
+          <li>Dendam lama yang turun-temurun</li>
+          <li>Masalah pribadi yang dibawa ke kelompok</li>
+          <li>Kurangnya pengawasan orang tua dan sekolah</li>
+          <li>Pengaruh lingkungan dan media yang menampilkan kekerasan</li>
+        </ul>
+        <p>Akibat dari tawuran tidak hanya merusak fasilitas umum, tetapi juga bisa menyebabkan luka-luka serius bahkan kematian. Selain itu, tawuran juga mengganggu ketertiban dan kenyamanan masyarakat sekitar.</p>
+      </div>
+      
+      <div id="tab3" class="tab-content">
+        <h3>Solusi Menjaga Persatuan dan Kesatuan</h3>
+        <ol>
+          <li><strong>Pendidikan Karakter:</strong> Menguatkan pendidikan Pancasila dan kewarganegaraan di sekolah untuk menanamkan nilai-nilai toleransi dan cinta tanah air.</li>
+          <li><strong>Dialog Antar Kelompok:</strong> Memfasilitasi dialog antar kelompok masyarakat untuk meningkatkan pemahaman dan mengurangi prasangka.</li>
+          <li><strong>Pemberdayaan Ekonomi:</strong> Memberikan akses pendidikan dan pekerjaan yang merata untuk mengurangi kesenjangan ekonomi.</li>
+          <li><strong>Literasi Media:</strong> Meningkatkan literasi media dan digital untuk mencegah penyebaran informasi yang menyesatkan.</li>
+          <li><strong>Keterlibatan Pemuda:</strong> Melibatkan pemuda dalam kegiatan positif seperti organisasi sosial dan kegiatan kerelawanan.</li>
+        </ol>
+      </div>
+    </div>
+    
+  
+    <footer>
+      <p>Artikel Pendidikan Pancasila dan Kewarganegaraan |</p>
+    </footer>
+  </div>
+  
+  <script>
+    // Tab functionality
+    function openTab(evt, tabId) {
+      let tabContents = document.getElementsByClassName("tab-content");
+      for (let i = 0; i < tabContents.length; i++) {
+        tabContents[i].classList.remove("active");
+      }
+      
+      let tabs = document.getElementsByClassName("tab");
+      for (let i = 0; i < tabs.length; i++) {
+        tabs[i].classList.remove("active");
+      }
+      
+      document.getElementById(tabId).classList.add("active");
+      evt.currentTarget.classList.add("active");
+    }
+    
+  </script>
+</body>
+</html>
